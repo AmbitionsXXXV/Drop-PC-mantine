@@ -1,0 +1,82 @@
+{
+  "name": "mantine-vite-template",
+  "private": true,
+  "version": "0.0.0",
+  "author": "etcetera",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "npm run lint:eslint && npm run lint:stylelint",
+    "lint:eslint": "eslint . --ext .ts,.tsx --cache",
+    "lint:stylelint": "stylelint '**/*.css' --cache",
+    "prettier": "prettier --check \"**/*.{ts,tsx}\"",
+    "prettier:write": "prettier --write \"**/*.{ts,tsx,js,cjs,css}\"",
+    "vitest": "vitest run",
+    "vitest:watch": "vitest",
+    "test": "npm run typecheck && npm run prettier && npm run lint && npm run vitest && npm run build",
+    "storybook": "storybook dev -p 6006",
+    "storybook:build": "storybook build",
+    "etc-fe-lint-scan": "etc-fe-lint scan",
+    "etc-fe-lint-fix": "etc-fe-lint fix"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.8.8",
+    "@mantine/core": "7.3.2",
+    "@mantine/hooks": "7.3.2",
+    "dayjs": "^1.11.10",
+    "graphql": "^16.8.1",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1"
+  },
+  "devDependencies": {
+    "@apollo/server": "^4.10.0",
+    "@storybook/addon-essentials": "^7.6.6",
+    "@storybook/addon-interactions": "^7.6.6",
+    "@storybook/addon-links": "^7.6.6",
+    "@storybook/blocks": "^7.6.6",
+    "@storybook/react": "^7.6.6",
+    "@storybook/react-vite": "^7.6.6",
+    "@storybook/testing-library": "^0.2.2",
+    "@testing-library/dom": "^9.3.3",
+    "@testing-library/jest-dom": "^6.1.5",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.10.5",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "autoprefixer": "^10.4.16",
+    "etc-fe-lint": "^1.1.7",
+    "husky": "^8.0.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jsdom": "^23.0.1",
+    "postcss": "^8.4.32",
+    "postcss-preset-mantine": "1.12.2",
+    "postcss-simple-vars": "^7.0.1",
+    "prop-types": "^15.8.1",
+    "storybook": "^7.6.6",
+    "storybook-dark-mode": "^3.0.3",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.10",
+    "vite-tsconfig-paths": "^4.2.2",
+    "vitest": "^1.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "etc-fe-lint commit-file-scan"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,css}": [
+      "etc-fe-lint commit-file-scan",
+      "prettier --write",
+      "eslint --fix"
+    ]
+  }
+}
