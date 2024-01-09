@@ -9,22 +9,27 @@ export interface INavLinksProps {
 }
 
 const NavLinks: FC<INavLinksProps> = ({ views }) => {
-  return views.map((view) => (
-    <NavLink
-      key={view.name}
-      to={view.path}
-      end={view.exact}
-      // onClick={() => toggleCollapsed()}
-      className={({ isActive }) =>
-        `${classes.navLink} ${isActive ? classes.navLinkActive : classes.navLinkInactive}`
-      }
-    >
-      <Group>
-        {view.icon}
-        <Text>{view.name ? view.name : view.name}</Text>
-      </Group>
-    </NavLink>
-  ))
+  return views.map(
+    (view) =>
+      !view.hideInMenu && (
+        <NavLink
+          key={view.name}
+          to={view.path}
+          end={view.exact}
+          // onClick={() => toggleCollapsed()}
+          className={({ isActive }) =>
+            `${classes.navLink} ${
+              isActive ? classes.navLinkActive : classes.navLinkInactive
+            }`
+          }
+        >
+          <Group>
+            {view.icon}
+            <Text>{view.name ? view.name : view.name}</Text>
+          </Group>
+        </NavLink>
+      )
+  )
 }
 
 export default NavLinks
