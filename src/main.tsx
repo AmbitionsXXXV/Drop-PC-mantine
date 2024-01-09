@@ -1,4 +1,5 @@
 import { MantineProvider } from '@mantine/core'
+import 'dayjs/locale/zh-cn'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './global.css'
