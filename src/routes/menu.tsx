@@ -1,3 +1,12 @@
+import {
+  GiftOutlined,
+  HomeOutlined,
+  IdcardOutlined,
+  PicRightOutlined,
+  ShopOutlined,
+  TeamOutlined
+} from '@ant-design/icons'
+
 interface IRoute {
   path: string
   name: string
@@ -21,25 +30,25 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
   [ROUTE_KEY.HOME]: {
     path: '/',
     name: '首页',
-    hideInMenu: true
-    // icon: <HomeOutlined />
+    hideInMenu: true,
+    icon: <HomeOutlined />
   },
   [ROUTE_KEY.MY]: {
     path: 'my',
     name: '个人信息',
-    hideInMenu: true
-    // icon: <HomeOutlined />
+    hideInMenu: true,
+    icon: <HomeOutlined />
   },
   [ROUTE_KEY.ORG]: {
     path: 'org',
     name: '门店管理',
-    hideInMenu: true
-    // icon: <ShopOutlined />
+    hideInMenu: true,
+    icon: <ShopOutlined />
   },
   [ROUTE_KEY.COURSE]: {
     path: 'course',
-    name: '课程管理'
-    // icon: <PicRightOutlined />
+    name: '课程管理',
+    icon: <PicRightOutlined />
   },
   [ROUTE_KEY.NO_ORG]: {
     path: 'noOrg',
@@ -48,18 +57,18 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
   },
   [ROUTE_KEY.STUDENT]: {
     path: 'student',
-    name: '学员管理'
-    // icon: <TeamOutlined />
+    name: '学员管理',
+    icon: <TeamOutlined />
   },
   [ROUTE_KEY.PRODUCT]: {
     path: 'product',
-    name: '商品管理'
-    // icon: <GiftOutlined />
+    name: '商品管理',
+    icon: <GiftOutlined />
   },
   [ROUTE_KEY.TEACHER]: {
     path: 'teacher',
-    name: '教师管理'
-    // icon: <IdcardOutlined />
+    name: '教师管理',
+    icon: <IdcardOutlined />
   },
   [ROUTE_KEY.PAGE_404]: {
     path: '*',
