@@ -69,7 +69,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "etc-fe-lint commit-file-scan"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
