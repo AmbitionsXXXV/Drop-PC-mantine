@@ -1,0 +1,36 @@
+.titleBarAdjustedHeight {
+  height: calc(
+    var(
+        --_section-height,
+        calc(
+          100dvh - var(--app-shell-header-offset, 0px) -
+            var(--app-shell-footer-offset, 0px)
+        )
+      ) - var(--titlebar-height)
+  ) !important;
+  margin-top: var(--titlebar-height);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-top: var(--titlebar-height);
+}
+
+.headerRightItems {
+  margin-left: auto;
+}
+
+.appShell main {
+  background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-4));
+}
+
+.mediaQuery {
+  display: none;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
