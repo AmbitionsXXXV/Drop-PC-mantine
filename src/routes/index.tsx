@@ -7,7 +7,7 @@ import Page404 from '@/pages/Page404/Page404.page'
 import Product from '@/pages/Product/Product.page'
 import Student from '@/pages/Student/Student.page'
 import Teacher from '@/pages/Teacher/Teacher.page'
-import { ROUTE_KEY } from './menu'
+import { ROUTE_KEY, routes } from './menu'
 
 export const ROUTE_COMPONENT = {
   [ROUTE_KEY.HOME]: Home,
@@ -20,3 +20,9 @@ export const ROUTE_COMPONENT = {
   [ROUTE_KEY.TEACHER]: Teacher,
   [ROUTE_KEY.PAGE_404]: Page404
 }
+
+export const views = routes.map((item) => {
+  const Component = ROUTE_COMPONENT[item.key]
+
+  return { path: item.path, component: <Component />, name: item.name, icon: item.icon }
+})

@@ -2,8 +2,7 @@ import NavLinks from '@/components/NavLinks'
 import OrgSelect from '@/components/OrgSelect'
 import { useGoTo, useIsOrgRoute } from '@/hooks'
 import { useUserContext } from '@/hooks/userHooks'
-import Home from '@/pages/Home/Home.page'
-import { ROUTE_KEY } from '@/routes/menu'
+import { ROUTE_KEY, routes } from '@/routes/menu'
 import { AUTH_TOKEN } from '@/utils/constants'
 import { LogoutOutlined, ShopOutlined } from '@ant-design/icons'
 import {
@@ -79,7 +78,7 @@ const MainLayout: FC = () => {
               <Text>Header Title</Text>
             </Group>
 
-            <Group>
+            <Group h="100%">
               {!isOrg && <OrgSelect />}
 
               <Tooltip label="门店管理">
@@ -89,12 +88,9 @@ const MainLayout: FC = () => {
           </Group>
         </Header>
 
-        <Navbar p="xs" className="overflow-y-auto">
+        <Navbar p="xs">
           <Section grow component={ScrollArea}>
-            <NavLinks
-              views={[{ component: Home, path: '/home', name: 'Home' }]}
-              toggleCollapsed={toggleCollapsed}
-            />
+            <NavLinks views={routes} toggleCollapsed={toggleCollapsed} />
           </Section>
 
           <Section className="pb-1">

@@ -20,6 +20,7 @@ const NavLinks: FC<INavLinksProps> = ({ views }) => {
       }
     >
       <Group>
+        {view.icon}
         <Text>{view.name ? view.name : view.name}</Text>
       </Group>
     </NavLink>

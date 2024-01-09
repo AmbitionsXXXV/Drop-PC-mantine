@@ -15,14 +15,19 @@ export const useGoTo = () => {
   const go = (pageKey?: string, params?: Record<string, string | number>) => {
     if (!pageKey) {
       nav('/')
+
       return
     }
+
     const route = getRouteByKey(pageKey)
+
     if (route && route.path) {
       if (!params) {
         nav(`/${route.path}`)
+
         return
       }
+
       // /page/:id params: { id: 1 } => /page/1
       const url = route.path.replace(
         /\/:(\w+)/g,
@@ -31,6 +36,7 @@ export const useGoTo = () => {
       nav(`/${url}`)
     }
   }
+
   return { back, go }
 }
 
@@ -43,13 +49,16 @@ export const useMatchedRoute = () => {
     () => routes.find((item) => matchPath(`/${item.path}`, r.pathname)),
     [r.pathname]
   )
+
   return route
 }
 
 export const useIsOrgRoute = () => {
   const curRoute = useMatchedRoute()
+
   if (curRoute?.path === ROUTE_CONFIG[ROUTE_KEY.ORG].path) {
     return true
   }
+
   return false
 }

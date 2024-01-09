@@ -13,7 +13,7 @@
 }
 
 .navLinkActive {
-  background-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+  background-color: light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-5));
 }
 
 .navLinkInactive:hover {

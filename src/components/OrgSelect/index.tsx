@@ -53,7 +53,7 @@ const OrgSelect = () => {
   }, [data])
 
   return (
-    <Space className="flex items-center">
+    <Space h="100%" className="flex items-center justify-center">
       选择门店：
       <Select
         searchable
