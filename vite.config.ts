@@ -7,12 +7,8 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   resolve: {
     alias: {
-      '@/': `${path.resolve(__dirname, 'src')}/`
+      '@/': `${path.resolve(__dirname, 'src')}/`,
+      '@public/': `${path.resolve(__dirname, 'public')}/`
     }
-  },
-  test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: './vitest.setup.mjs'
   }
 })

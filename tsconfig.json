@@ -28,6 +28,7 @@
 
     "paths": {
       "@/*": ["./src/*"],
+      "@public": ["./public"],
       "@test-utils": ["./test-utils"]
     }
   },
