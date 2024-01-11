@@ -14,6 +14,9 @@ dependencies:
   '@mantine/core':
     specifier: 7.4.0
     version: 7.4.0(@mantine/hooks@7.4.0)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+  '@mantine/dates':
+    specifier: ^7.4.1
+    version: 7.4.1(@mantine/core@7.4.0)(@mantine/hooks@7.4.0)(dayjs@1.11.10)(react-dom@18.2.0)(react@18.2.0)
   '@mantine/form':
     specifier: ^7.4.1
     version: 7.4.1(react@18.2.0)
@@ -35,6 +38,9 @@ dependencies:
   graphql:
     specifier: ^16.8.1
     version: 16.8.1
+  install:
+    specifier: ^0.13.0
+    version: 0.13.0
   lodash:
     specifier: ^4.17.21
     version: 4.17.21
@@ -2746,6 +2752,23 @@ packages:
       type-fest: 3.13.1
     transitivePeerDependencies:
       - '@types/react'
+    dev: false
+
+  /@mantine/dates@7.4.1(@mantine/core@7.4.0)(@mantine/hooks@7.4.0)(dayjs@1.11.10)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-a7DNeJmLCgnFbd9NAEQ/LP998zLFPu8IWVjtJY/YJ4OUIDLEPi56OzuopA3epVzGkMcEvL4Ak78Z23KfZPJepg==}
+    peerDependencies:
+      '@mantine/core': 7.4.1
+      '@mantine/hooks': 7.4.1
+      dayjs: '>=1.0.0'
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      '@mantine/core': 7.4.0(@mantine/hooks@7.4.0)(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@mantine/hooks': 7.4.0(react@18.2.0)
+      clsx: 2.0.0
+      dayjs: 1.11.10
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /@mantine/form@7.4.1(react@18.2.0):
@@ -8188,6 +8211,11 @@ packages:
       strip-ansi: 6.0.1
       through: 2.3.8
     dev: true
+
+  /install@0.13.0:
+    resolution: {integrity: sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==}
+    engines: {node: '>= 0.10'}
+    dev: false
 
   /internal-slot@1.0.6:
     resolution: {integrity: sha512-Xj6dv+PsbtwyPpEflsejS+oIZxmMlV44zAhG479uYu89MsjcYOhCFnNyKrkJrihbsiasQyY0afoCl/9BLR65bg==}
