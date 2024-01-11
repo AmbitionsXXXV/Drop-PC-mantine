@@ -2,7 +2,7 @@ import { ApolloProvider } from '@apollo/client'
 import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import MainLayout from './layout/MainLayout'
+import MainLayout from './layout/MainLayout/MainLayout'
 import Login from './pages/Login/Login.page'
 import { ROUTE_COMPONENT } from './routes'
 import { routes } from './routes/menu'
@@ -20,6 +20,7 @@ export default function App() {
             <Route path="/" element={<MainLayout />}>
               {routes.map((item) => {
                 const Component = ROUTE_COMPONENT[item.key]
+
                 return <Route path={item.path} key={item.key} element={<Component />} />
               })}
             </Route>
