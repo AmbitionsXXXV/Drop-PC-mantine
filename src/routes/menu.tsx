@@ -1,29 +1,31 @@
 import {
-  GiftOutlined,
-  HomeOutlined,
-  IdcardOutlined,
-  PicRightOutlined,
-  ShopOutlined,
-  TeamOutlined
-} from '@ant-design/icons'
+  IconAlignBoxRightStretch,
+  IconBuildingStore,
+  IconGift,
+  IconHome,
+  IconId,
+  IconUsers
+} from '@tabler/icons-react'
+import { FC } from 'react'
 
 interface IRoute {
   path: string
   name: string
-  icon?: React.ReactNode
+  icon?: FC<any>
   hideInMenu?: boolean
+  links?: Array<{ name: string; path: string }>
 }
 
 export const ROUTE_KEY = {
-  HOME: 'home',
-  MY: 'my',
-  ORG: 'org',
-  COURSE: 'course',
-  STUDENT: 'student',
-  PRODUCT: 'product',
-  TEACHER: 'teacher',
-  NO_ORG: 'noOrg',
-  PAGE_404: 'p404'
+  HOME: '/home',
+  MY: '/my',
+  ORG: '/org',
+  COURSE: '/course',
+  STUDENT: '/student',
+  PRODUCT: '/product',
+  TEACHER: '/teacher',
+  NO_ORG: '/noOrg',
+  PAGE_404: '/p404'
 }
 
 export const ROUTE_CONFIG: Record<string, IRoute> = {
@@ -31,44 +33,44 @@ export const ROUTE_CONFIG: Record<string, IRoute> = {
     path: '/',
     name: '首页',
     hideInMenu: true,
-    icon: <HomeOutlined />
+    icon: IconHome
   },
   [ROUTE_KEY.MY]: {
-    path: 'my',
+    path: '/my',
     name: '个人信息',
     hideInMenu: true,
-    icon: <HomeOutlined />
+    icon: IconHome
   },
   [ROUTE_KEY.ORG]: {
-    path: 'org',
+    path: '/org',
     name: '门店管理',
     hideInMenu: true,
-    icon: <ShopOutlined />
+    icon: IconBuildingStore
   },
   [ROUTE_KEY.COURSE]: {
-    path: 'course',
+    path: '/course',
     name: '课程管理',
-    icon: <PicRightOutlined />
+    icon: IconAlignBoxRightStretch
   },
   [ROUTE_KEY.NO_ORG]: {
-    path: 'noOrg',
+    path: '/noOrg',
     name: '选择门店提示',
     hideInMenu: true
   },
   [ROUTE_KEY.STUDENT]: {
-    path: 'student',
+    path: '/student',
     name: '学员管理',
-    icon: <TeamOutlined />
+    icon: IconUsers
   },
   [ROUTE_KEY.PRODUCT]: {
-    path: 'product',
+    path: '/product',
     name: '商品管理',
-    icon: <GiftOutlined />
+    icon: IconGift
   },
   [ROUTE_KEY.TEACHER]: {
-    path: 'teacher',
+    path: '/teacher',
     name: '教师管理',
-    icon: <IdcardOutlined />
+    icon: IconId
   },
   [ROUTE_KEY.PAGE_404]: {
     path: '*',

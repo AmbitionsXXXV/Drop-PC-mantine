@@ -14,13 +14,6 @@ const MainLayout: FC = () => {
   const outlet = useOutlet()
   const { store } = useUserContext()
 
-  // const logoutHandler = () => {
-  //   sessionStorage.setItem(AUTH_TOKEN, '')
-  //   localStorage.setItem(AUTH_TOKEN, '')
-
-  //   nav('/login')
-  // }
-
   return (
     <>
       <AppShell
@@ -28,7 +21,7 @@ const MainLayout: FC = () => {
         header={{ height: 60 }}
         className={classes.appShell}
         navbar={{
-          width: 200,
+          width: 300,
           breakpoint: 'sm',
           collapsed: { desktop: !collapsed }
         }}

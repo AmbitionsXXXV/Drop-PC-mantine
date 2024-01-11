@@ -1,8 +1,9 @@
+import { ActionToggle } from '@/components/ActionToggle/ActionToggle'
 import OrgSelect from '@/components/OrgSelect'
 import { useGoTo, useIsOrgRoute } from '@/hooks'
 import { ROUTE_KEY } from '@/routes/menu'
 import { ShopOutlined } from '@ant-design/icons'
-import { AppShell, Burger, Group, Text, Tooltip } from '@mantine/core'
+import { AppShell, Burger, Group, Space, Text, Tooltip } from '@mantine/core'
 import type { FC } from 'react'
 import classes from './MainHeader.module.css'
 
@@ -48,6 +49,10 @@ const MainHeader: FC<IMainHeaderProps> = ({ collapsed, toggleCollapsed }) => {
           <Tooltip label="门店管理">
             <ShopOutlined onClick={goToOrg} />
           </Tooltip>
+
+          <Space h="100%">
+            <ActionToggle />
+          </Space>
         </Group>
       </Group>
     </Header>

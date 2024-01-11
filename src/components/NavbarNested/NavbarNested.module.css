@@ -1,6 +1,6 @@
 .navbar {
   background-color: light-dark(var(--mantine-color-white), var(--mantine-color-dark-6));
-  height: calc(100vh - 68px);
+  height: calc(100vh - rem(60px));
   width: rem(300px);
   padding: var(--mantine-spacing-md);
   padding-bottom: 0;
@@ -27,7 +27,6 @@
 }
 
 .linksInner {
-  padding-top: var(--mantine-spacing-xl);
   padding-bottom: var(--mantine-spacing-xl);
 }
 

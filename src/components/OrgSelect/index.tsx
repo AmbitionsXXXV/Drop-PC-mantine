@@ -1,6 +1,5 @@
 import { useGoTo } from '@/hooks'
 import { useUserContext } from '@/hooks/userHooks'
-import { ROUTE_KEY } from '@/routes/menu'
 import { useOrganizations } from '@/service/org'
 import { currentOrg } from '@/utils'
 import { LOCAL_CURRENT_ORG } from '@/utils/constants'
@@ -36,15 +35,15 @@ const OrgSelect = () => {
     localStorage.setItem(LOCAL_CURRENT_ORG, JSON.stringify(option))
   }
 
-  useEffect(() => {
-    if (currentOrg()?.value) {
-      setStore({
-        currentOrg: currentOrg().value
-      })
-    } else {
-      go(ROUTE_KEY.NO_ORG)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (currentOrg()?.value) {
+  //     setStore({
+  //       currentOrg: currentOrg().value
+  //     })
+  //   } else {
+  //     go(ROUTE_KEY.NO_ORG)
+  //   }
+  // }, [])
 
   useEffect(() => {
     const _options = data?.map((item) => ({ label: item.name, value: item.id }))

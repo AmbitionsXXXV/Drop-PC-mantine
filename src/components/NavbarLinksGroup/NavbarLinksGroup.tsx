@@ -1,77 +1,80 @@
 import { Box, Collapse, Group, Text, ThemeIcon, UnstyledButton, rem } from '@mantine/core'
-import { IconCalendarStats, IconChevronRight } from '@tabler/icons-react'
+import { IconChevronRight } from '@tabler/icons-react'
+import clsx from 'clsx'
 import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import classes from './NavbarLinksGroup.module.css'
 
 interface LinksGroupProps {
-  icon: React.FC<any>
-  label: string
+  icon?: React.FC<any>
+  name: string
+  path: string
+  hideInMenu?: boolean
   initiallyOpened?: boolean
-  links?: Array<{ label: string; link: string }>
+  links?: Array<{ name: string; path: string }>
 }
 
 export function LinksGroup({
   icon: Icon,
-  label,
+  name,
+  path,
+  hideInMenu,
   initiallyOpened,
   links
 }: LinksGroupProps) {
-  const hasLinks = Array.isArray(links)
+  const { pathname } = useLocation()
+  const nav = useNavigate()
   const [opened, setOpened] = useState(initiallyOpened || false)
+
+  const hasLinks = Array.isArray(links)
   const items = (hasLinks ? links : []).map((link) => (
     <Text<'a'>
       component="a"
+      key={link.name}
+      href={link.path}
       className={classes.link}
-      href={link.link}
-      key={link.label}
-      onClick={(event) => event.preventDefault()}
+      onClick={() => nav(link.path, { replace: true })}
     >
-      {link.label}
+      {link.name}
     </Text>
   ))
 
   return (
     <>
-      <UnstyledButton onClick={() => setOpened((o) => !o)} className={classes.control}>
-        <Group justify="space-between" gap={0}>
-          <Box style={{ display: 'flex', alignItems: 'center' }}>
-            <ThemeIcon variant="light" size={30}>
-              <Icon style={{ width: rem(18), height: rem(18) }} />
-            </ThemeIcon>
-            <Box ml="md">{label}</Box>
-          </Box>
-          {hasLinks && (
-            <IconChevronRight
-              className={classes.chevron}
-              stroke={1.5}
-              style={{
-                width: rem(16),
-                height: rem(16),
-                transform: opened ? 'rotate(-90deg)' : 'none'
-              }}
-            />
-          )}
-        </Group>
-      </UnstyledButton>
+      {!hideInMenu && !!Icon && (
+        <UnstyledButton
+          onClick={() => setOpened((o) => !o)}
+          className={clsx(classes.control, pathname === path && classes.active)}
+        >
+          <Group
+            gap={0}
+            justify="space-between"
+            onClick={() => nav(path, { replace: true })}
+          >
+            <Box style={{ display: 'flex', alignItems: 'center' }}>
+              <ThemeIcon variant="light" size={30}>
+                <Icon style={{ width: rem(18), height: rem(18) }} />
+              </ThemeIcon>
+
+              <Box ml="md">{name}</Box>
+            </Box>
+
+            {hasLinks && (
+              <IconChevronRight
+                className={classes.chevron}
+                stroke={1.5}
+                style={{
+                  width: rem(16),
+                  height: rem(16),
+                  transform: opened ? 'rotate(-90deg)' : 'none'
+                }}
+              />
+            )}
+          </Group>
+        </UnstyledButton>
+      )}
+
       {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
     </>
-  )
-}
-
-const mockdata = {
-  label: 'Releases',
-  icon: IconCalendarStats,
-  links: [
-    { label: 'Upcoming releases', link: '/' },
-    { label: 'Previous releases', link: '/' },
-    { label: 'Releases schedule', link: '/' }
-  ]
-}
-
-export function NavbarLinksGroup() {
-  return (
-    <Box mih={220} p="md">
-      <LinksGroup {...mockdata} />
-    </Box>
   )
 }
