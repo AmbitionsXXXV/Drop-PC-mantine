@@ -8,7 +8,7 @@ import { useForm, zodResolver } from '@mantine/form'
 import { useDocumentTitle } from '@mantine/hooks'
 import { useEffect, useRef, useState, type FC } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { toast } from 'sonner'
+import { Toaster, toast } from 'sonner'
 import classes from './Login.module.css'
 
 const Login: FC = () => {
@@ -24,7 +24,7 @@ const Login: FC = () => {
   const form = useForm({
     initialValues: {
       tel: '18258145396',
-      msg: '',
+      code: '',
       autoLogin: true
     },
     validate: zodResolver(msgCodeLoginFormSchema)
@@ -32,7 +32,7 @@ const Login: FC = () => {
 
   const loginHandler = async (variables: {
     tel: string
-    msg: string
+    code: string
     autoLogin: boolean
   }) => {
     const res = await login({ variables })
@@ -85,6 +85,8 @@ const Login: FC = () => {
 
   return (
     <div className={classes.wrapper}>
+      <Toaster richColors position="top-center" />
+
       <Paper p={30} radius={0} className={classes.form}>
         <Title order={2} className={classes.title} ta="center" mt="md" mb={50}>
           Welcome back to Drop Class!
@@ -114,8 +116,6 @@ const Login: FC = () => {
                     variables: { tel: form.getInputProps('tel').value }
                   })
 
-                  console.log(res)
-
                   if (res.data.sendCodeMsg.code === 200) {
                     toast.success(res.data.sendCodeMsg.message)
                   } else {
@@ -128,7 +128,7 @@ const Login: FC = () => {
                 {disabled ? `${count}` : ''}获取验证码
               </Button>
             }
-            {...form.getInputProps('msg')}
+            {...form.getInputProps('code')}
           />
 
           <Checkbox
@@ -141,6 +141,8 @@ const Login: FC = () => {
           <Button fullWidth mt="xl" size="md" type="submit">
             Login
           </Button>
+
+          <Button onClick={() => toast.success('111')}>111</Button>
         </form>
       </Paper>
     </div>
