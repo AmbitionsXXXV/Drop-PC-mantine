@@ -11,12 +11,6 @@
   margin-top: var(--titlebar-height);
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  margin-top: var(--titlebar-height);
-}
-
 .headerRightItems {
   margin-left: auto;
 }

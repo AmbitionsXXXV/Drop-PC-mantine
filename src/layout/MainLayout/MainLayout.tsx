@@ -1,33 +1,21 @@
 import NavLinks from '@/components/NavLinks'
-import OrgSelect from '@/components/OrgSelect'
-import { useGoTo, useIsOrgRoute } from '@/hooks'
 import { useUserContext } from '@/hooks/userHooks'
-import { ROUTE_KEY, routes } from '@/routes/menu'
+import { routes } from '@/routes/menu'
 import { AUTH_TOKEN } from '@/utils/constants'
-import { LogoutOutlined, ShopOutlined } from '@ant-design/icons'
-import {
-  AppShell,
-  Burger,
-  Divider,
-  Group,
-  ScrollArea,
-  Space,
-  Text,
-  Tooltip
-} from '@mantine/core'
+import { LogoutOutlined } from '@ant-design/icons'
+import { AppShell, Divider, ScrollArea, Space } from '@mantine/core'
 import { useToggle } from '@mantine/hooks'
 import type { FC } from 'react'
 import { useNavigate, useOutlet } from 'react-router-dom'
+import MainHeader from '../MainHeader/MainHeader'
 import classes from './main-layout.module.css'
 
-const { Header, Main, Navbar, Section } = AppShell
+const { Main, Navbar, Section } = AppShell
 
 const MainLayout: FC = () => {
   const [collapsed, toggleCollapsed] = useToggle([true, false])
   const outlet = useOutlet()
   const { store } = useUserContext()
-  const isOrg = useIsOrgRoute()
-  const { go } = useGoTo()
   const nav = useNavigate()
 
   const logoutHandler = () => {
@@ -35,10 +23,6 @@ const MainLayout: FC = () => {
     localStorage.setItem(AUTH_TOKEN, '')
 
     nav('/login')
-  }
-
-  const goToOrg = () => {
-    go(ROUTE_KEY.ORG)
   }
 
   return (
@@ -58,35 +42,7 @@ const MainLayout: FC = () => {
           collapsed: { desktop: false }
         }}
       >
-        <Header data-tauri-drag-region p="md" className={classes.header}>
-          <Group h="100%" justify="space-between" className="w-full">
-            <Group>
-              <Burger
-                size="sm"
-                hiddenFrom="sm"
-                opened={collapsed}
-                onClick={() => toggleCollapsed()}
-              />
-
-              <Burger
-                size="sm"
-                visibleFrom="sm"
-                opened={collapsed}
-                onClick={() => toggleCollapsed()}
-              />
-
-              <Text>Header Title</Text>
-            </Group>
-
-            <Group h="100%">
-              {!isOrg && <OrgSelect />}
-
-              <Tooltip label="门店管理">
-                <ShopOutlined onClick={goToOrg} />
-              </Tooltip>
-            </Group>
-          </Group>
-        </Header>
+        <MainHeader collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
 
         <Navbar p="xs">
           <Section grow component={ScrollArea}>
