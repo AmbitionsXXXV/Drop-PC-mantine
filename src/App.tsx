@@ -2,6 +2,7 @@ import { ApolloProvider } from '@apollo/client'
 import { MantineProvider } from '@mantine/core'
 import '@mantine/core/styles.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import UserInfo from './components/UserInfo'
 import MainLayout from './layout/MainLayout/MainLayout'
 import Login from './pages/Login/Login.page'
 import { ROUTE_COMPONENT } from './routes'
@@ -14,17 +15,19 @@ export default function App() {
     <ApolloProvider client={client}>
       <MantineProvider theme={theme}>
         <BrowserRouter>
-          <Routes>
-            <Route path="/login" element={<Login />} />
+          <UserInfo>
+            <Routes>
+              <Route path="/login" element={<Login />} />
 
-            <Route path="/" element={<MainLayout />}>
-              {routes.map((item) => {
-                const Component = ROUTE_COMPONENT[item.key]
+              <Route path="/" element={<MainLayout />}>
+                {routes.map((item) => {
+                  const Component = ROUTE_COMPONENT[item.key]
 
-                return <Route path={item.path} key={item.key} element={<Component />} />
-              })}
-            </Route>
-          </Routes>
+                  return <Route path={item.path} key={item.key} element={<Component />} />
+                })}
+              </Route>
+            </Routes>
+          </UserInfo>
         </BrowserRouter>
       </MantineProvider>
     </ApolloProvider>
