@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Idcard", "mantine", "sonner", "stylelint", "typecheck"],
+  "cSpell.words": ["Idcard", "mantine", "mockdata", "sonner", "stylelint", "typecheck"],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
