@@ -1,9 +1,12 @@
 import type { FC } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const NoOrg: FC = () => {
+  const nav = useNavigate()
+
   return (
     <>
-      <div>NoOrg</div>
+      <div onClick={() => nav('/111')}>NoOrg</div>
     </>
   )
 }

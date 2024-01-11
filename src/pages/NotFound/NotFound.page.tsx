@@ -1,5 +1,4 @@
 import { Button, Container, Image, SimpleGrid, Text, Title } from '@mantine/core'
-import image from '@public/NotFoundImage.svg'
 import type { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 import classes from './NotFound.module.css'
@@ -10,7 +9,7 @@ const NotFound: FC = () => {
   return (
     <Container className={classes.root}>
       <SimpleGrid spacing={{ base: 40, sm: 80 }} cols={{ base: 1, sm: 2 }}>
-        <Image src={image} className={classes.mobileImage} />
+        <Image src="/NotFoundImage.svg" className={classes.mobileImage} />
 
         <div>
           <Title className={classes.title}>Something is not right...</Title>
@@ -32,7 +31,7 @@ const NotFound: FC = () => {
           </Button>
         </div>
 
-        <Image src={image} className={classes.desktopImage} />
+        <Image src="/NotFoundImage.svg" className={classes.desktopImage} />
       </SimpleGrid>
     </Container>
   )
