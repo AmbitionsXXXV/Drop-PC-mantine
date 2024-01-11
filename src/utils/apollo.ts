@@ -5,7 +5,7 @@ import { onError } from '@apollo/client/link/error' // 引入onError
 import { toast } from 'sonner'
 import { AUTH_TOKEN } from './constants'
 
-const uri = '/graphql'
+const uri = '//localhost:3000/graphql'
 
 const httpLink = createHttpLink({
   uri
