@@ -4,6 +4,7 @@ import { AppShell } from '@mantine/core'
 import { useToggle } from '@mantine/hooks'
 import type { FC } from 'react'
 import { useOutlet } from 'react-router-dom'
+import { Toaster } from 'sonner'
 import MainHeader from '../MainHeader/MainHeader'
 import classes from './main-layout.module.css'
 
@@ -31,6 +32,8 @@ const MainLayout: FC = () => {
           collapsed: { desktop: false }
         }}
       >
+        <Toaster richColors position="top-center" />
+
         <MainHeader collapsed={collapsed} toggleCollapsed={toggleCollapsed} />
 
         <NavbarNested />
