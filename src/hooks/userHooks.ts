@@ -19,6 +19,7 @@ export const useGetUser = () => {
     onCompleted: (data) => {
       if (data.getUserInfo) {
         const { id, name, tel, desc, avatar } = data.getUserInfo
+
         setStore({
           id,
           name,
@@ -27,10 +28,12 @@ export const useGetUser = () => {
           avatar,
           refetchHandler: refetch
         })
+
         // 当前在登录页面，且已经登录了，那就直接跳到首页
         if (location.pathname === '/login') {
           nav('/')
         }
+
         return
       }
       setStore({ refetchHandler: refetch })
@@ -47,5 +50,6 @@ export const useGetUser = () => {
       }
     }
   })
+
   return { loading }
 }
