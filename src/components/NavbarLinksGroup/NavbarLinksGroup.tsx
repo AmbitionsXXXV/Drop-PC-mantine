@@ -1,12 +1,12 @@
 import { Box, Collapse, Group, Text, ThemeIcon, UnstyledButton, rem } from '@mantine/core'
 import { IconChevronRight } from '@tabler/icons-react'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import classes from './NavbarLinksGroup.module.css'
 
 interface LinksGroupProps {
-  icon?: React.FC<any>
+  icon?: FC<any>
   name: string
   path: string
   hideInMenu?: boolean
